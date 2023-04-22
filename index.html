@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>AES</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+</head>
+<style>
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=text] {
+  border: 2px solid #d2738a;
+  color:#d2738a;
+  background-color:black;
+  border-radius: 4px;
+}
+
+
+</style>
+<body background = 'https://fauux.neocities.org/bg104.gif' style="color:white">
+    <script>
+	  function encrypt() {
+         var encrypted = CryptoJS.AES.encrypt(
+            document.getElementById("text").value,
+            document.getElementById("password").value
+         );
+         document.getElementById("EncryptedValue").innerHTML = encrypted;
+         document.getElementById("decrypted").innerHTML = "";
+      }
+      function decrypt() {
+         var decrypted = CryptoJS.AES.decrypt(
+            document.getElementById("EncryptedValue").innerHTML,
+            document.getElementById("password").value
+         ).toString(CryptoJS.enc.Utf8);
+         document.getElementById("decrypted").innerHTML = decrypted;
+         document.getElementById("EncryptedValue").innerHTML = "";
+      }
+   </script>
+<div class="center-screen">
+<div>
+<span id="decrypted" style="font-size:80px;text-align:center;color:white"></span> <br />
+<input id="password" type="text" value="AAAAAAA" />
+ <button onclick="decrypt()">decrypt</button>
+  <span id="EncryptedValue" hidden>U2FsdGVkX18BHJ6fk7mkt5mdQt0LJWWdybI3VeIMza0=</span>
+</div>
+</div>
+<div>
+ 
+ </div>
+ </div>
+</body>
+</html>
